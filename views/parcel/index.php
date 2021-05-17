@@ -93,12 +93,13 @@ $this->params['breadcrumbs'][] = $this->title;
 				'view' => function($url, $dataProvider, $key) {
 					return '';
 					},
-				'visibleButtons'=>[
-					'delete'=> function($model){
-					return $model->status == 'unsent';
-						},
-					],
-				
+				//'visibleButtons'=>[
+					'delete'=> function($url, $dataProvider, $key){
+						if($dataProvider->status == 'unsent')
+						{
+							return '<button type="button" class="btn btn-update">delete</button>';
+						}
+					},
 				]
 			],
         ],
